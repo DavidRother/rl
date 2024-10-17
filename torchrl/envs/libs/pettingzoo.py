@@ -69,6 +69,22 @@ def _load_available_envs() -> Dict:
         warnings.warn(
             f"Butterfly environments failed to load with error message {err}."
         )
+    try:
+        from cooking_zoo.all_modules import cooking_zoo_environments
+
+        all_environments.update(cooking_zoo_environments)
+    except ModuleNotFoundError as err:
+        warnings.warn(
+            f"CookingZoo environment failed to load with error message {err}."
+        )
+    try:
+        from lbforaging.all_modules import lbforaging_environments
+
+        all_environments.update(lbforaging_environments)
+    except ModuleNotFoundError as err:
+        warnings.warn(
+            f"CookingZoo environment failed to load with error message {err}."
+        )
     return all_environments
 
 
